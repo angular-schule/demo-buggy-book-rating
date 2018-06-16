@@ -18,8 +18,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.store
       // .getAllHardcoded()
-      // .getAllViaSwagger()
-      .getAllViaGraphQL()
+      .getAllViaSwagger()
+      // .getAllViaGraphQL()
       .pipe(tap(x => console.warn(x)))
       .subscribe(books => this.books = books);
   }
