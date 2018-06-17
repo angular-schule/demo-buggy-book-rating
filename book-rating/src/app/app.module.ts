@@ -45,5 +45,36 @@ export class AppModule {
       link: httpLink.create({uri: 'https://api.angular.schule/graphql'}),
       cache: new InMemoryCache()
     });
+
+    crazyLoop();
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+// FIXME: crazyLoop slows down the performance of our app dramatically,
+// but we can spot it easily in the performance tab!
+let x = 0;
+function crazyLoop() {
+
+  const newP = document.createElement('p');
+  const newText = document.createTextNode('Hello, everything is slow!');
+  newP.appendChild(newText);
+  const body = document.getElementsByTagName('body')[0];
+  for (let i = 0; i < 100; i++) {
+    body.appendChild(newP);
+    body.removeChild(newP);
+  }
+
+  if (x++ < 1000) {
+    crazyLoop();
   }
 }
