@@ -59,7 +59,9 @@ export class BookStoreService {
   }
 
   getAllViaSwagger(): Observable<Book[]> {
-    return this.bookService.booksGet();
+    // FIXME: this simulates a slow server performance, we inspect this via the network tab
+    // FIX: return this.bookService.booksGet();
+    return this.bookService.booksSlowGet();
   }
 
   getAllHardcoded(): Observable<Book[]> {
