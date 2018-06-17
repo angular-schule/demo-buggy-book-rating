@@ -10,10 +10,21 @@ export class BookRatingService {
   private maxRating = 5;
 
   rateUp(book: Book): Book {
-    return {
-      ...book,
-      rating: Math.min(this.maxRating, book.rating + 1)
-    };
+
+    // FIXME: hard to find, until we active "pause on caught exceptions"
+    try {
+      if (1 === 1) {
+        throw Error('ups!');
+      }
+
+      return {
+        ...book,
+        rating: Math.min(this.maxRating, book.rating + 1)
+      };
+
+    } catch {
+      return book;
+    }
   }
 
   rateDown(book: Book): Book {
