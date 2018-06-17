@@ -27,7 +27,13 @@ br-root {
   background: linear-gradient(0deg, #FFF 1px, $color_bg_2 1px, $color_bg_1 100%);
   background-position: bottom;
   width: 100%;
+
+  // BUG: design is broken when screen size changes
   height: 30%;
+
+  // BUGFIX: better use this (exact number can be figured out in "computed" tab)
+  height: 225px;
+
   transition: ease all 500ms;
 }
 
