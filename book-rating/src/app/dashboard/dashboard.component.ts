@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { tap } from 'rxjs/operators';
+import { tap, map, filter, reduce } from 'rxjs/operators';
 
 import { Book } from '../shared/book';
 import { BookStoreService } from '../shared/book-store.service';
+import { from, Observable, of } from 'rxjs';
+import { AwesomeService } from '../awesome.service';
 
 @Component({
   selector: 'br-dashboard',
@@ -11,11 +13,16 @@ import { BookStoreService } from '../shared/book-store.service';
 export class DashboardComponent implements OnInit {
 
   books = [];
+  strings: string[] = []
 
-  constructor(private store: BookStoreService) {
+  constructor(private store: BookStoreService, private as: AwesomeService) {
   }
 
   ngOnInit() {
+
+    // AWESOME MEMORY LEAKS
+    // this.as.doAwesomeStuff();
+
     this.store
       // .getAllHardcoded()
       .getAllViaSwagger()
